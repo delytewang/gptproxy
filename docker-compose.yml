@@ -1,4 +1,4 @@
-version: '3.3'
+version: '2.0'
 services:
     nginx:
         container_name: nginxd
@@ -6,8 +6,8 @@ services:
             - '80:80'
             - '443:443'
         volumes:
-            - '$PWD/nginx_proxy.conf:/etc/nginx/nginx.conf'
-            - '$PWD/data/log/:/var/log/nginx/'
-            - '$PWD/example.com-ssl.crt:/etc/ssl/certs/example.com-ssl.crt'
-            - '$PWD/example.com-ssl.key:/etc/ssl/private/example.com-ssl.key'
+            - './nginx_proxy.conf:/etc/nginx/nginx.conf'
+            - './data/log/:/var/log/nginx/'
+            - './example.com-ssl.crt:/etc/ssl/certs/example.com-ssl.crt'
+            - './example.com-ssl.key:/etc/ssl/private/example.com-ssl.key'
         image: 'nginx:latest'
