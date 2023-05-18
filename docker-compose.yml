@@ -6,8 +6,8 @@ services:
             - '80:80'
             - '443:443'
         volumes:
-            - '$PWD/data/conf/nginx_proxy.conf:/etc/nginx/nginx.conf'
+            - '$PWD/nginx_proxy.conf:/etc/nginx/nginx.conf'
             - '$PWD/data/log/:/var/log/nginx/'
-            - '$PWD/data/conf/example.com-ssl.crt:/etc/ssl/certs/example.com-ssl.crt'
-            - '$PWD/data/conf/example.com-ssl.key:/etc/ssl/private/example.com-ssl.key'
+            - '$PWD/example.com-ssl.crt:/etc/ssl/certs/example.com-ssl.crt'
+            - '$PWD/example.com-ssl.key:/etc/ssl/private/example.com-ssl.key'
         image: 'nginx:latest'
