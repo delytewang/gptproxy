@@ -21,11 +21,11 @@ command -v $command_name >/dev/null 2>&1 || {
 
 # get domain name in tailnet
 host_name=$(hostname)
-tailnet_name=".tail80de.ts.net.key"
+tailnet_name=".tail80de.ts.net"
 domain_name=${host_name}${tailnet_name}
 
 # generate ssl certificate
-tailscale cert domain_name
+# tailscale cert domain_name
 cert_file=${domain_name}".crt"
 key_file=${domain_name}".key"
 
@@ -35,13 +35,13 @@ then
 fi
 
 # replace example.com in docker-compose.yml with real domain
-sed 's/example.com-ssl.crt/$cert_file/g' docker-compose.yml
-sed 's/example.com-ssl.key/$key_file/g' docker-compose.yml
+sed -i "s/example\.com\-ssl\.crt/$cert_file/g" docker-compose.yml
+sed -i "s/example\.com\-ssl\.key/$key_file/g" docker-compose.yml
 
-# replace example.com in nginx.conf with real domain
-sed 's/example.com/$domain_name/g' nginx_proxy.conf
-sed 's/example.com-ssl.crt/$cert_file/g' nginx_proxy.conf
-sed 's/example.com-ssl.key/$key_file/g' nginx_proxy.conf
+# # replace example.com in nginx.conf with real domain
+sed -i "s/example\.com/$domain_name/g" nginx_proxy.conf
+sed -i "s/example\.com\-ssl\.crt/$cert_file/g" nginx_proxy.conf
+sed -i "s/example\.com\-ssl\.key/$key_file/g" nginx_proxy.conf
 
-# start instance
+# # start instance
 docker-compose up -d
