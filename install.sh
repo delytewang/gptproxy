@@ -25,7 +25,7 @@ tailnet_name=".tail80de.ts.net"
 domain_name=${host_name}${tailnet_name}
 
 # generate ssl certificate
-tailscale cert domain_name
+tailscale cert $domain_name
 cert_file=${domain_name}".crt"
 key_file=${domain_name}".key"
 
