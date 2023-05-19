@@ -44,5 +44,7 @@ sed -i "s/example\.com/$domain_name/g" nginx_proxy.conf
 sed -i "s/example\.com\-ssl\.crt/$cert_file/g" nginx_proxy.conf
 sed -i "s/example\.com\-ssl\.key/$key_file/g" nginx_proxy.conf
 
-# # start instance
+# start instance
 docker-compose up -d
+
+echo "gptproxy instance starts with https://$domain_name."
